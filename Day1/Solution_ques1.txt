@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int minNumber(vector<int>& nums1, vector<int>& nums2) {
+        // Step 1: Sort both arrays
+        sort(nums1.begin(), nums1.end());
+        sort(nums2.begin(), nums2.end());
+
+        int i = 0, j = 0;
+
+        // Step 2: Find the common digit
+        while (i < nums1.size() && j < nums2.size()) {
+            if (nums1[i] == nums2[j]) {
+                return nums1[i];  // Return the common digit
+            } else if (nums1[i] < nums2[j]) {
+                i++;  // Move pointer in nums1
+            } else {
+                j++;  // Move pointer in nums2
+            }
+        }
+
+        // Step 3: If no common digit, form the smallest number
+        // Combine the smallest digits from both arrays
+        return min(nums1[0] * 10 + nums2[0], nums2[0] * 10 + nums1[0]);
+    }
+};
