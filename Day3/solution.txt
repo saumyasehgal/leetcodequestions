@@ -1,0 +1,24 @@
+class Solution {
+public:
+//Function to create frequency map for a string
+unordered_map<char,int>getFrequencyMap(const string& word){
+    unordered_map<char ,int>freqMap;
+for (char c:word){
+    freqMap[c]++;
+}
+return freqMap;
+}
+    vector<string>removeAnagrams(vector<string>& words) {
+vector<string>result;
+result.push_back(words[0]);
+unordered_map<char,int>prevMap=getFrequencyMap(words[0]);
+for(int i=1;i<words.size();i++){
+    unordered_map<char,int>currMap=getFrequencyMap(words[i]);
+    if(currMap !=prevMap){
+        result.push_back(words[i]);
+        prevMap=currMap;
+}
+    }
+     return result;   
+}
+};
