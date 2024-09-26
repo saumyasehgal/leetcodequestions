@@ -1,0 +1,23 @@
+
+ int longestPrefixInArrays(const vector<int>& arr1, const vector<int>& arr2) {
+    int maxLen = 0; // To store the maximum prefix length
+
+    // Iterate through each element of arr1
+    for (int i = 0; i < arr1.size(); i++) {
+        string s1 = to_string(arr1[i]); // Convert integer to string
+
+        // Iterate through each element of arr2
+        for (int j = 0; j < arr2.size(); j++) {
+            string s2 = to_string(arr2[j]); // Convert integer to string
+
+            // Find the common prefix between s1 and s2
+            int commonLen = longestCommonPrefix(s1, s2);
+
+            // Update max length if the current common prefix is longer
+            if (commonLen > maxLen) {
+                maxLen = commonLen;
+            }
+        }
+    }
+    return maxLen;
+}
