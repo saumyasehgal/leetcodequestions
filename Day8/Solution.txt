@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+    vector<int> result;
+    
+    for (int i = 0; i < nums.size(); ++i) {
+        int idx = abs(nums[i]) - 1; // Use value to calculate index
+        
+        // If the number at the index is negative, it means this value has appeared before
+        if (nums[idx] < 0) {
+            result.push_back(abs(nums[i]));
+        }
+        
+        // Mark the number at that index as negative
+        nums[idx] = -nums[idx];
+    }
+    
+    return result;
+}
+};
