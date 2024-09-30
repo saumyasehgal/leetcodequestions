@@ -1,0 +1,15 @@
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+         // Create an empty vector to store the reversed string
+    vector<char> reversed;
+    
+    // Loop through the original string in reverse order
+    for (int i = s.size() - 1; i >= 0; i--) {
+        reversed.push_back(s[i]);  // Add each character to the new vector
+    }
+    
+    // Copy the reversed vector back to the original string
+    s = reversed;  // In this simple approach, we replace the original vector
+}
+};
