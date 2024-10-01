@@ -1,0 +1,31 @@
+class Solution {
+public:
+  // Helper function to calculate the sum of digits of a number
+int sumOfDigits(string numStr) {
+    int sum = 0;
+    for (char digit : numStr) {
+        sum += digit - '0';  // Convert character to integer
+    }
+    return sum;
+}
+
+int getLucky(string s, int k) {
+    string numStr = "";
+    
+    // Step 1: Convert string s to integer by replacing each letter with its position in the alphabet
+    for (char c : s) {
+        int letterValue = c - 'a' + 1;  // 'a' -> 1, 'b' -> 2, ..., 'z' -> 26
+        numStr += to_string(letterValue);
+    }
+    
+    // Step 2: Sum the digits k times
+    int result = sumOfDigits(numStr);  // First transformation
+    
+    for (int i = 1; i < k; ++i) {
+        numStr = to_string(result);  // Convert current result to string for the next sum of digits
+        result = sumOfDigits(numStr);  // Sum the digits again
+    }
+    
+    return result;
+}
+};
